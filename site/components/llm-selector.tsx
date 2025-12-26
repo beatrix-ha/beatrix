@@ -34,7 +34,13 @@ export function DriverSelector({
       api.getDriverList()
     )
 
-    const { driver } = parseModelWithDriverString(automationModelWithDriver)
+    // When automationModel is not configured, fall back to first available driver
+    let driver: string
+    if (automationModelWithDriver) {
+      driver = parseModelWithDriverString(automationModelWithDriver).driver
+    } else {
+      driver = drivers[0] ?? ''
+    }
 
     onDriverChange(driver)
     return { defaultDriver: driver, drivers }

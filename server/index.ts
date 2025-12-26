@@ -112,7 +112,7 @@ async function serveCommand(options: {
           websocketMessages.next({
             message: data,
             reply: async (m) => {
-              ws.send(m)
+              ws.send(typeof m === 'string' ? m : new Uint8Array(m))
             },
           })
         },

@@ -9,8 +9,11 @@ export async function createConfigViaEnv(notebookDirectory: string) {
   let config: AppConfig = { automationModel: '', visionModel: '' }
   let cfgPath = getConfigFilePath(notebookDirectory)
 
-  if (await fs.exists(cfgPath)) {
+  try {
+    await fs.access(cfgPath)
     config = await loadConfig(cfgPath)
+  } catch {
+    // File doesn't exist, use default config
   }
 
   migrateConfig(config) // Keep migrateConfig for potential future use, but it's empty now

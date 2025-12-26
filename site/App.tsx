@@ -147,7 +147,7 @@ export default function Home() {
         </Sidebar>
 
         <main className="flex w-full flex-1 flex-row">
-          <div className="flex-1">{mainContent}</div>
+          <div className="flex-1 overflow-hidden">{mainContent}</div>
           <SidebarTrigger className="mt-5 mr-2" />
         </main>
       </SidebarProvider>

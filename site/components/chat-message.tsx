@@ -90,7 +90,7 @@ export function ContentBlock({
             </CollapsibleTrigger>
           </div>
           <CollapsibleContent className="pt-2">
-            <pre className="overflow-auto rounded bg-muted p-2 text-sm">
+            <pre className="max-w-full overflow-x-auto rounded bg-muted p-2 text-sm">
               {JSON.stringify(msg.content, null, 2)}
             </pre>
           </CollapsibleContent>
